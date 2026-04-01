@@ -40,6 +40,7 @@ StringRef Triple::getArchTypeName(ArchType Kind) {
   case csky:           return "csky";
   case dxil:           return "dxil";
   case hexagon:        return "hexagon";
+  case isp_ras_pastila:return "isp_ras_pastila";
   case hsail64:        return "hsail64";
   case hsail:          return "hsail";
   case kalimba:        return "kalimba";
@@ -222,6 +223,8 @@ StringRef Triple::getArchTypePrefix(ArchType Kind) {
 
   case hsail:
   case hsail64:     return "hsail";
+
+  case isp_ras_pastila:return "isp_ras_pastila";
 
   case spir:
   case spir64:      return "spir";
@@ -470,8 +473,8 @@ Triple::ArchType Triple::getArchTypeForLLVMName(StringRef Name) {
     .Case("hsail64", hsail64)
     .Case("spir", spir)
     .Case("spir64", spir64)
+    .Case("isp_ras_pastila", isp_ras_pastila)
     .Case("spirv", spirv)
-    .Case("spirv32", spirv32)
     .Case("spirv64", spirv64)
     .Case("kalimba", kalimba)
     .Case("lanai", lanai)
@@ -608,14 +611,11 @@ static Triple::ArchType parseArch(StringRef ArchName) {
           .Case("amdil64", Triple::amdil64)
           .Case("hsail", Triple::hsail)
           .Case("hsail64", Triple::hsail64)
+          .Case("isp_ras_pastila", Triple::isp_ras_pastila)
           .Case("spir", Triple::spir)
           .Case("spir64", Triple::spir64)
           .Cases("spirv", "spirv1.5", "spirv1.6", Triple::spirv)
-          .Cases("spirv32", "spirv32v1.0", "spirv32v1.1", "spirv32v1.2",
-            "spirv32v1.3", "spirv32v1.4", "spirv32v1.5",
-            "spirv32v1.6", Triple::spirv32)
           .Cases("spirv64", "spirv64v1.0", "spirv64v1.1", "spirv64v1.2",
-            "spirv64v1.3", "spirv64v1.4", "spirv64v1.5",
             "spirv64v1.6", Triple::spirv64)
           .StartsWith("kalimba", Triple::kalimba)
           .Case("lanai", Triple::lanai)
@@ -943,6 +943,7 @@ static Triple::ObjectFormatType getDefaultFormat(const Triple &T) {
   case Triple::hexagon:
   case Triple::hsail64:
   case Triple::hsail:
+  case Triple::isp_ras_pastila:
   case Triple::kalimba:
   case Triple::lanai:
   case Triple::loongarch32:
@@ -1656,6 +1657,7 @@ unsigned Triple::getArchPointerBitWidth(llvm::Triple::ArchType Arch) {
   case llvm::Triple::dxil:
   case llvm::Triple::hexagon:
   case llvm::Triple::hsail:
+  case llvm::Triple::isp_ras_pastila:
   case llvm::Triple::kalimba:
   case llvm::Triple::lanai:
   case llvm::Triple::loongarch32:
@@ -1766,6 +1768,7 @@ Triple Triple::get32BitArchVariant() const {
   case Triple::dxil:
   case Triple::hexagon:
   case Triple::hsail:
+  case Triple::isp_ras_pastila:
   case Triple::kalimba:
   case Triple::lanai:
   case Triple::loongarch32:
@@ -1831,6 +1834,7 @@ Triple Triple::get64BitArchVariant() const {
   case Triple::csky:
   case Triple::dxil:
   case Triple::hexagon:
+  case Triple::isp_ras_pastila:
   case Triple::kalimba:
   case Triple::lanai:
   case Triple::m68k:
@@ -1916,6 +1920,7 @@ Triple Triple::getBigEndianArchVariant() const {
   case Triple::hexagon:
   case Triple::hsail64:
   case Triple::hsail:
+  case Triple::isp_ras_pastila:
   case Triple::kalimba:
   case Triple::loongarch32:
   case Triple::loongarch64:
@@ -2019,6 +2024,7 @@ bool Triple::isLittleEndian() const {
   case Triple::hexagon:
   case Triple::hsail64:
   case Triple::hsail:
+  case Triple::isp_ras_pastila:
   case Triple::kalimba:
   case Triple::loongarch32:
   case Triple::loongarch64:
