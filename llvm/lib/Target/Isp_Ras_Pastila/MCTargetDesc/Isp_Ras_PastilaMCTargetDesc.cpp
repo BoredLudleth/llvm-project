@@ -76,4 +76,8 @@ extern "C" LLVM_EXTERNAL_VISIBILITY void LLVMInitializeIsp_Ras_PastilaTargetMC()
 
   // Register the MCInstPrinter
   TargetRegistry::RegisterMCInstPrinter(TheIsp_Ras_PastilaTarget, createIsp_Ras_PastilaMCInstPrinter);
+  // Register the MC Code Emitter.
+  TargetRegistry::RegisterMCCodeEmitter(TheIsp_Ras_PastilaTarget, createIsp_Ras_PastilaMCCodeEmitter);
+  // Register the asm backend.
+  TargetRegistry::RegisterMCAsmBackend(TheIsp_Ras_PastilaTarget, createIsp_Ras_PastilaAsmBackend);
 }

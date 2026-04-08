@@ -5,13 +5,13 @@
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Target/TargetMachine.h"
 
-#define ISP_RAS_PASTILA_DUMP(Color)                                                        \
+/*#define ISP_RAS_PASTILA_DUMP(Color)                                                        \
   {                                                                            \
     llvm::errs().changeColor(Color)                                            \
         << __func__ << "\n\t\t" << __FILE__ << ":" << __LINE__ << "\n";        \
     llvm::errs().changeColor(llvm::raw_ostream::WHITE);                        \
-  }
-// #define ISP_RAS_PASTILA_DUMP(Color) {}
+  }*/
+#define ISP_RAS_PASTILA_DUMP(Color) {}
 
 #define ISP_RAS_PASTILA_DUMP_RED ISP_RAS_PASTILA_DUMP(llvm::raw_ostream::RED)
 #define ISP_RAS_PASTILA_DUMP_GREEN ISP_RAS_PASTILA_DUMP(llvm::raw_ostream::GREEN)

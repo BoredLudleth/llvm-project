@@ -9,6 +9,7 @@ tablegen(LLVM Isp_Ras_PastilaGenMCPseudoLowering.inc -gen-pseudo-lowering)
 tablegen(LLVM Isp_Ras_PastilaGenDAGISel.inc -gen-dag-isel)
 tablegen(LLVM Isp_Ras_PastilaGenCallingConv.inc -gen-callingconv)
 tablegen(LLVM Isp_Ras_PastilaGenAsmWriter.inc -gen-asm-writer)
+tablegen(LLVM Isp_Ras_PastilaGenMCCodeEmitter.inc -gen-emitter)
 
 add_public_tablegen_target(Isp_Ras_PastilaCommonTableGen)
 
